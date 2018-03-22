@@ -1,50 +1,40 @@
 #!/bin/bash
 
-Cyan='\033[0;36m'
-Default='\033[0;m'
+#git操作
+git stash
+git pull origin master --tags
+git stash pop
 
-version=""
-repoName=""
-commitMsg=""
 confirmed="n"
+NewVersionNumber=""
 
-getVersion() {
-    read -p "请输入版本号: " version
+getNewVersion() {
+    read -p "请输入新的版本号: " NewVersionNumber
 
-    if test -z "$version"; then
-        getVersion
+    if test -z "$NewVersionNumber"; then
+        getNewVersion
     fi
 }
 
-getRepoName() {
-    read -p "请输入仓库名: " repoName
+#获取版本号并显示
+VersionString=`grep -E 's.version.*=' __ProjectName__.podspec`
+VersionNumberDot=`tr -cd "[0-9.]" <<<"$VersionString"`
+VersionNumber=`sed 's/^.//' <<<"$VersionNumberDot"`
 
-    if test -z "$repoName"; then
-        getRepoName
-    fi
-}
-
-getCommitMsg() {
-  read -p "请输入提交信息: " commitMsg
-
-  if test -z "$commitMsg"; then
-      getCommitMsg
-  fi
-}
-
-getInfomation() {
-getVersion
-getRepoName
-getCommitMsg
 
 echo -e "\n${Default}================================================"
-echo -e "  Version   :  ${Cyan}${version}${Default}"
-echo -e "  RepoName  :  ${Cyan}${repoName}${Default}"
-echo -e "  CommitMsg :  ${Cyan}${commitMsg}${Default}"
+echo -e " Current Version   :  ${Cyan}${VersionNumber}${Default}"
+echo -e "================================================\n"
+
+getInfomation() {
+getNewVersion
+#输出当前版本号
+echo -e "\n${Default}================================================"
+echo -e " New Version IS :  ${Cyan}${NewVersionNumber}${Default}"
 echo -e "================================================\n"
 }
 
-echo -e "\n"
+#请求输入新的版本号
 while [ "$confirmed" != "y" -a "$confirmed" != "Y" ]
 do
 if [ "$confirmed" == "n" -o "$confirmed" == "N" ]; then
@@ -53,11 +43,16 @@ fi
 read -p "确定? (y/n):" confirmed
 done
 
+
+LineNumber=`grep -nE 's.version.*=' __ProjectName__.podspec | cut -d : -f1`
+sed -i "" "${LineNumber}s/${VersionNumber}/${NewVersionNumber}/g" __ProjectName__.podspec
+echo -e "\n${Default}================================================"
+echo -e "current version is ${VersionNumber}, new version is ${NewVersionNumber}"
+echo -e "================================================\n"
+
+git push && podspec push
 git add .
-git commit -m $commitMsg
-git tag $version
-git push
-git push --tags
-pod repo push $repoName --allow-warnings --use-libraries
-say "finished"
-echo "finished"
+git commit -am ${NewVersionNumber}
+git tag ${NewVersionNumber}
+git push origin master --tags
+cd ~/.cocoapods/repos/Specs && git pull origin master && cd - && pod repo push Specs __ProjectName__.podspec --verbose --allow-warnings --use-libraries
