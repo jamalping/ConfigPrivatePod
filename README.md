@@ -7,7 +7,7 @@
 	+ 比如我们创建了`Test`私有库，正确的配置文件结构如下：
 
 		```
-		Project
+		File
 		├── configPrivatePod
 		├── Test
 		├── ...
