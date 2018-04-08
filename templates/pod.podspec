@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
 
   #- 推荐这种 -#
   # s.resource_bundles = {
-  #   '__ProjectName__' => ['__ProjectName__/Assets/*.png']
+  #   '__ProjectName__' => ['__ProjectName__/Assets/**/*']
   # }
 
   # s.resources  = '__ProjectName__/**/*.{storyboard,xib}', '__ProjectName__/Assets/*'
