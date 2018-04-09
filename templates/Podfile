@@ -3,7 +3,7 @@ platform :ios, '8.0'
 source 'git@git.silvrr.com:iOS/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
-target '__ProjectName___Tests' do
+target '__ProjectName___Example' do
   use_frameworks!
   
   # pod 'Base', :path => '../'
