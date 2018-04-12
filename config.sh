@@ -78,12 +78,11 @@ do
     read -p "confirm? (y/n):" confirmed
 done
 
-mkdir -p "../${projectName}/${projectName}/${projectName}"
+mkdir -p "../${projectName}/${projectName}"
 
 licenseFilePath="../${projectName}/FILE_LICENSE"
 gitignoreFilePath="../${projectName}/.gitignore"
 specFilePath="../${projectName}/${projectName}.podspec"
-readmeFilePath="../${projectName}/readme.md"
 uploadFilePath="../${projectName}/upload.sh"
 swiftVerisonFilePath="../${projectName}/.swift-version"
 podfilePath="../${projectName}/Example/Podfile"
@@ -94,8 +93,6 @@ echo "copy to $gitignoreFilePath"
 cp -f ./templates/gitignore    "$gitignoreFilePath"
 echo "copy to $specFilePath"
 cp -f ./templates/pod.podspec  "$specFilePath"
-echo "copy to $readmeFilePath"
-cp -f ./templates/readme.md    "$readmeFilePath"
 echo "copy to $uploadFilePath"
 cp -f ./templates/upload.sh    "$uploadFilePath"
 echo "copy to $swiftVerisonFilePath"
@@ -105,7 +102,6 @@ cp -f ./templates/Podfile      "$podfilePath"
 
 echo "editing..."
 sed -i "" "s%__ProjectName__%${projectName}%g" "$gitignoreFilePath"
-sed -i "" "s%__ProjectName__%${projectName}%g" "$readmeFilePath"
 sed -i "" "s%__ProjectName__%${projectName}%g" "$uploadFilePath"
 sed -i "" "s%__ProjectName__%${projectName}%g" "$swiftVerisonFilePath"
 sed -i "" "s%__ProjectName__%${projectName}%g" "$podfilePath"
