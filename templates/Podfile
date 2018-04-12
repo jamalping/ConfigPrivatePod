@@ -5,7 +5,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target '__ProjectName___Example' do
   use_frameworks!
-  
+  pod '__ProjectName__', :path => '../'
+
   # pod 'Base', :path => '../'
   # pod 'Network', '~> 0.1.0'
 

@@ -86,6 +86,7 @@ specFilePath="../${projectName}/${projectName}.podspec"
 readmeFilePath="../${projectName}/readme.md"
 uploadFilePath="../${projectName}/upload.sh"
 swiftVerisonFilePath="../${projectName}/.swift-version"
+podfilePath="../${projectName}/Example/Podfile"
 
 echo "copy to $licenseFilePath"
 cp -f ./templates/FILE_LICENSE "$licenseFilePath"
@@ -99,18 +100,22 @@ echo "copy to $uploadFilePath"
 cp -f ./templates/upload.sh    "$uploadFilePath"
 echo "copy to $swiftVerisonFilePath"
 cp -f ./templates/.swift-version       "$swiftVerisonFilePath"
+echo "copy to $podfilePath"
+cp -f ./templates/Podfile      "$podfilePath"
 
 echo "editing..."
 sed -i "" "s%__ProjectName__%${projectName}%g" "$gitignoreFilePath"
 sed -i "" "s%__ProjectName__%${projectName}%g" "$readmeFilePath"
 sed -i "" "s%__ProjectName__%${projectName}%g" "$uploadFilePath"
 sed -i "" "s%__ProjectName__%${projectName}%g" "$swiftVerisonFilePath"
+sed -i "" "s%__ProjectName__%${projectName}%g" "$podfilePath"
 
 sed -i "" "s%__ProjectName__%${projectName}%g"      "$specFilePath"
 sed -i "" "s%__HomePage__%${homePage}%g"            "$specFilePath"
 sed -i "" "s%__HTTPSRepo__%${httpsRepo}%g"          "$specFilePath"
 sed -i "" "s%__Author__%${authorName}%g"        "$specFilePath"
 sed -i "" "s%__SSHRepo__%${sshRepo}%g"        "$specFilePath"
+
 
 echo "edit finished"
 
