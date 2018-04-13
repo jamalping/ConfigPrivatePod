@@ -55,4 +55,5 @@ git add .
 git commit -am ${NewVersionNumber}
 git tag ${NewVersionNumber}
 git push origin master --tags
-cd ~/.cocoapods/repos/Specs && git pull origin master && cd - && pod repo push Specs __ProjectName__.podspec --verbose --allow-warnings --use-libraries
+pod repo update Specs && pod repo push Specs __ProjectName__.podspec --verbose --allow-warnings --use-libraries
+# cd ~/.cocoapods/repos/Specs && git pull origin master && cd - && pod repo push Specs __ProjectName__.podspec --verbose --allow-warnings --use-libraries
