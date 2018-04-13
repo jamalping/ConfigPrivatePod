@@ -1,13 +1,20 @@
 platform :ios, '8.0'
+use_frameworks!
 
 source 'git@git.silvrr.com:iOS/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target '__ProjectName___Example' do
-  use_frameworks!
+
   pod '__ProjectName__', :path => '../'
 
   # pod 'Base', :path => '../'
   # pod 'Network', '~> 0.1.0'
+
+  # target '__ProjectName___Tests' do
+  #   inherit! :search_paths
+  #
+  #
+  # end
 
 end
