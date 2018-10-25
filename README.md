@@ -23,3 +23,9 @@
 
 
 PS: 如果本地私有库索引名字与`upload.sh`文件内名字不一直，需要手动修改`upload.sh`里面的最后的`Specs`为你本地的私有`podspec`库名，使用`pod repo`命令即可查看
+
+### 使用示例：
+![01](https://note.youdao.com/yws/public/resource/1f13165024cdc4730cf2982957fca8e1/xmlnote/WEBRESOURCE73de7e7275585330bfc8e409761d1852/6265)
+
+![02](https://note.youdao.com/yws/public/resource/1f13165024cdc4730cf2982957fca8e1/xmlnote/WEBRESOURCE8472290fa2238a45b1de1b43702a2797/6264)
+
