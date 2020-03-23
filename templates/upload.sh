@@ -53,10 +53,17 @@ echo -e "================================================\n"
 git push && podspec push
 git add .
 git commit -am ${NewVersionNumber}
+TAGS=$(git tag -l)
+if [[ $TAGS == *${NewVersionNumber}* ]]
+then
+    #先删除tag
+    git tag -d ${NewVersionNumber}
+    git push origin :refs/tags/${NewVersionNumber}
+fi
 git tag ${NewVersionNumber}
 git push origin master --tags
 
-pod trunk push __ProjectName__.podspec --allow-warnings
+pod repo push ML-Repo __ProjectName__.podspec --verbose --allow-warnings --use-libraries
 #pod repo push xyj-xyjpodspec【私库名】 XYJBaseUI.podspec【podspec文件】 --allow-warnings[允许警告]
 #pod repo update Specs && pod repo push Specs __ProjectName__.podspec --verbose --allow-warnings --sources='git@git.silvrr.com:iOS/Specs.git,https://github.com/CocoaPods/Specs'
 # cd ~/.cocoapods/repos/Specs && git pull origin master && cd - && pod repo push Specs __ProjectName__.podspec --verbose --allow-warnings --use-libraries

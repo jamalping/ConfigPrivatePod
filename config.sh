@@ -118,7 +118,7 @@ echo "edit finished"
 echo "cleaning..."
 cd ../$projectName
 git init
-git remote add origin $sshRepo  &> /dev/null
+git remote add origin $httpsRepo  &> /dev/null
 git rm -rf --cached ./Pods/     &> /dev/null
 git rm --cached Podfile.lock    &> /dev/null
 git rm --cached .DS_Store       &> /dev/null
