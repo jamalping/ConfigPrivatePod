@@ -69,6 +69,8 @@ getInfomation() {
     echo -e "================================================\n"
 }
 
+
+
 echo -e "\n"
 while [ "$confirmed" != "y" -a "$confirmed" != "Y" ]
 do
@@ -77,6 +79,17 @@ do
     fi
     read -p "confirm? (y/n):" confirmed
 done
+
+pod lib create ${projectName}
+
+# 获取当前执行脚本的父目录
+dir=$(dirname $0)
+# 进入父目录并打印路径
+currentDir=$(cd $dir; pwd)
+
+echo "当前目录 ${currentDir}"
+
+ mv "${currentDir}/${projectName}" "${currentDir}/../${projectName}"
 
 mkdir -p "../${projectName}/${projectName}"
 
@@ -112,6 +125,7 @@ sed -i "" "s%__HTTPSRepo__%${httpsRepo}%g"          "$specFilePath"
 sed -i "" "s%__Author__%${authorName}%g"        "$specFilePath"
 sed -i "" "s%__SSHRepo__%${sshRepo}%g"        "$specFilePath"
 
+cat "$specFilePath"
 
 echo "edit finished"
 
