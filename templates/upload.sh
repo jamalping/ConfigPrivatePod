@@ -63,7 +63,7 @@ fi
 git tag ${NewVersionNumber}
 git push origin master --tags
 
-pod repo push ML-Repo __ProjectName__.podspec --verbose --allow-warnings --use-libraries
+pod repo push gitlab-aastocks-aapodspec __ProjectName__.podspec --verbose --allow-warnings --use-libraries
 #pod repo push xyj-xyjpodspec【私库名】 XYJBaseUI.podspec【podspec文件】 --allow-warnings[允许警告]
 #pod repo update Specs && pod repo push Specs __ProjectName__.podspec --verbose --allow-warnings --sources='git@git.silvrr.com:iOS/Specs.git,https://github.com/CocoaPods/Specs'
 # cd ~/.cocoapods/repos/Specs && git pull origin master && cd - && pod repo push Specs __ProjectName__.podspec --verbose --allow-warnings --use-libraries
