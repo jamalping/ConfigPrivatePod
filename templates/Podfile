@@ -1,7 +1,8 @@
 platform :ios, '9.0'
 use_frameworks!
 
-source 'http://git.midland.com.cn/midland-mobile/midland-Repo.git'
+source 'https://gitlab.com/aastocks/ios/public/aapodspec.git'
+source 'https://gitlab.com/aastocks/aapodspec.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target '__ProjectName___Example' do
