@@ -25,6 +25,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "__HTTPSRepo__", :tag => s.version.to_s }
 
   s.source_files = "__ProjectName__/Classes/**/*"
+  s.swift_version = '5.0'
 
   #- 推荐这种 -#
   # s.resource_bundles = {
